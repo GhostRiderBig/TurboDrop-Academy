@@ -1,0 +1,96 @@
+# Netlify Configuration
+# Automatically detected when deploying to Netlify
+
+[build]
+  # No build command needed - static files only
+  publish = "."
+
+  # Command to run before build (optional)
+  # command = "echo 'No build needed for static site'"
+
+[build.environment]
+  # Environment variables (if needed)
+  # NODE_VERSION = "18"
+
+# Redirect rules
+[[redirects]]
+  # Redirect all 404s to index.html for SPA routing
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
+
+# Headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "no-referrer-when-downgrade"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.jpeg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.gif"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Pragma = "no-cache"
+    Expires = "0"
+
+# Error pages
+# [[redirects]]
+#   from = "/404"
+#   to = "/index.html"
+#   status = 404
+
+# Custom domain example
+# [[redirects]]
+#   from = "http://example.com/*"
+#   to = "https://example.com/:splat"
+#   status = 301
+#   force = true
+
+# [[redirects]]
+#   from = "https://www.example.com/*"
+#   to = "https://example.com/:splat"
+#   status = 301
+#   force = true
